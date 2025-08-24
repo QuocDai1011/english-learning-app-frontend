@@ -1,7 +1,7 @@
 import Header from '~/components/Layouts/component/Header';
 import Footer from '~/components/Layouts/component/Footer';
 
-function HeaderOnly({ children }) {
+function HeaderAndFooter({ children }) {
     return (
         <div>
             <Header />
@@ -11,4 +11,4 @@ function HeaderOnly({ children }) {
     );
 }
 
-export default HeaderOnly;
+export default HeaderAndFooter;

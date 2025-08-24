@@ -1,2 +1,2 @@
 export {default as DefaultLayout} from './DefaultLayout'
-export {default as HeaderOnly} from './HeaderAndFooter'
+export {default as HeaderAndFooter} from './HeaderAndFooter'

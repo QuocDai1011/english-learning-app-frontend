@@ -1,0 +1,59 @@
+.container {
+    padding-top: 2rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    padding-bottom: 8rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    text-align: center;
+    width: 50rem;
+    padding: 0.8rem 1.6rem;
+}
+
+.link-home {
+    text-decoration: none;
+}
+
+.slogan {
+    color: #ffd700;
+    font-size: 2.2rem;
+    margin-top: 2.4rem;
+}
+
+.slogan-highlight {
+    color: var(--accent1-color);
+}
+
+.box-contain-btn {
+    width: 64%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-custom {
+    border: none;
+    margin-top: 4rem;
+    font-size: 2.2rem;
+    padding: 4px 10px;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: #d58f16;
+    }
+}
+
+.test {
+    margin-top: 100rem;
+}
+
+.test-motion, .box {
+    height: 10rem;
+    width: 10rem;
+}
+
+
