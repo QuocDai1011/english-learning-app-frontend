@@ -47,13 +47,35 @@
     }
 }
 
-.test {
+.lessons-information {
     margin-top: 100rem;
 }
 
-.test-motion, .box {
-    height: 10rem;
-    width: 10rem;
+
+.about-section {
+    margin-left: -6rem;
+    margin-right: -6rem;
+    margin-top: 10rem;
+    padding: 6rem 7rem;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.about-section__heading {
+    margin-bottom: 4.8rem;
+    font-size: 3.6rem;
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: bold;
+}
+
+.about-section__content {
+    width: 70%;
+    font-size: 2.4rem;
+    text-align: center;
+}
+
 
 
