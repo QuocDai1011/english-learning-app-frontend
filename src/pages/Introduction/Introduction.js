@@ -1,10 +1,10 @@
 import styles from './Introduction.module.scss';
 import classNames from 'classnames/bind';
-import { Link, Links } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { motion } from 'motion/react';
 import * as motion from 'motion/react-client';
-import { useState } from 'react';
+import * as icons from 'react-icons/fa';
 
 const cx = classNames.bind(styles);
 
@@ -39,19 +39,48 @@ function Introduction() {
             </div>
 
             {/* About Section */}
-            <div className={cx('about-section')}>
-                <h3 className={cx('about-section__heading')}>Giới thiệu về trang web</h3>
+            <motion.div
+                d="information"
+                className={cx('about-section')}
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+                viewport={{ once: true }}
+            >
+                <h3 className={cx('about-section__heading')}>Bạn sẽ nhận được gì khi học ở trang web này?</h3>
                 <p className={cx('about-section__content')}>
-                    Trang web sẽ giúp các bạn hiểu rõ 5 cấu trúc câu cơ bản của tiếng Anh dành cho học sinh, sinh viên và
-                    những người muốn lấy lại căn bản. Đặc biệt, nó sẽ giúp bạn cân hết các bài tập dạng điền loại từ, tiến
-                    bộ ít nhiều trong kĩ năng Writing, hiểu rõ ngữ pháp hơn. Nội dung được thiết kế dễ hiểu, trực quan và
-                    thực tế, kèm quiz sau mỗi bài học cùng bài tập ứng dụng để ghi nhớ nhanh hơn. 
-                    <Link to='/home'> Hãy bắt đầu hành trình học tiếng Anh của bạn ngay hôm nay!</Link>
+                    Trang web sẽ giúp các bạn hiểu rõ 5 cấu trúc câu cơ bản, biết viết các loại câu đơn, câu phức và câu
+                    ghép trong tiếng Anh dành cho học sinh, sinh viên và những người muốn lấy lại căn bản. Đặc biệt, nó
+                    sẽ giúp bạn cân hết các bài tập dạng điền loại từ, tiến bộ ít nhiều trong kĩ năng Writing, hiểu rõ
+                    ngữ pháp hơn. Nội dung được thiết kế dễ hiểu, trực quan và thực tế, kèm quiz sau mỗi bài học cùng
+                    bài tập ứng dụng để ghi nhớ nhanh hơn.
+                    <Link to="/home"> Hãy bắt đầu hành trình học tiếng Anh của bạn ngay hôm nay!</Link>
                 </p>
+            </motion.div>
+
+            {/* notiable features */}
+            <div className={cx('notiable-features')}>
+                <h3 >Đặc điểm nổi bật</h3>
+            
+                <div className={cx('notiable-features__row')}>
+                    <div className={cx('notiable-features__icons')}>
+                        <p><icons.FaBook /></p>
+                        <p><icons.FaQuestionCircle /></p>
+                        <p><icons.FaPencilAlt /></p>
+                        <p><icons.FaRoute /></p>
+                    </div>
+    
+                    <div className={cx('notiable-features__content')}>
+                        <p>Học qua bài giảng trực quan, rõ ràng và chi tiết.</p>
+                        <p>Quiz tương tác sinh động giúp dễ dàng ghi nhớ hơn.</p>
+                        <p>Bài tập thực hành củng cố lý thuyết vừa được học.</p>
+                        <p>Lộ trình step-by-step rõ ràng, minh bạch.</p>
+                    </div>
+                </div>
             </div>
 
             {/* informations of lessons */}
-            <div id="information" className={cx('lessons-information')}>
+            <div className={cx('lessons-information')}>
                 <div className="relative border-l-4 border-green-500 ml-6">
                     {steps.map((step, index) => (
                         <motion.div

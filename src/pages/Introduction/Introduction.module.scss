@@ -47,16 +47,11 @@
     }
 }
 
-.lessons-information {
-    margin-top: 100rem;
-}
-
-
 .about-section {
-    margin-left: -6rem;
+    margin-left: -5rem;
     margin-right: -6rem;
     margin-top: 10rem;
-    padding: 6rem 7rem;
+    padding: 7rem 7rem;
     background-color: var(--text-color);
     color: var(--background-color);
     display: flex;
@@ -77,5 +72,35 @@
     text-align: center;
 }
 
+.notiable-features {
+    margin: 6rem 7rem;
+    padding: 7rem 7rem;
 
+    & h3 {
+        font-size: 4.8rem;
+        text-align: center;
+        margin-bottom: 4.8rem;
+        color: var(--accent1-color);
+    }
+}
 
+.notiable-features__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notiable-features__icons {
+    font-size: 3rem;
+    margin-right: 3rem;
+    margin-left: 5rem;
+    color: var(--secondary-color);
+}
+
+.notiable-features__content {
+    font-size: 3rem;
+}
+
+.lessons-information {
+    margin-top: 100rem;
+}
