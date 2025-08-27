@@ -34,13 +34,13 @@ function Introduction() {
                     <button className={cx('btn-custom')}>Bắt đầu học ngay</button>
                 </Link>
                 <a href="#information">
-                    <button className={cx('btn-custom')}>Khám phá khóa học</button>
+                    <button className={cx('btn-custom')}>Khám phá trang web</button>
                 </a>
             </div>
 
             {/* About Section */}
             <motion.div
-                d="information"
+                id="information"
                 className={cx('about-section')}
                 initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -59,17 +59,31 @@ function Introduction() {
             </motion.div>
 
             {/* notiable features */}
-            <div className={cx('notiable-features')}>
-                <h3 >Đặc điểm nổi bật</h3>
-            
+            <motion.div
+                className={cx('notiable-features')}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                viewport={{ once: true }}
+            >
+                <h3>Đặc điểm nổi bật</h3>
+
                 <div className={cx('notiable-features__row')}>
                     <div className={cx('notiable-features__icons')}>
-                        <p><icons.FaBook /></p>
-                        <p><icons.FaQuestionCircle /></p>
-                        <p><icons.FaPencilAlt /></p>
-                        <p><icons.FaRoute /></p>
+                        <p>
+                            <icons.FaBook />
+                        </p>
+                        <p>
+                            <icons.FaQuestionCircle />
+                        </p>
+                        <p>
+                            <icons.FaPencilAlt />
+                        </p>
+                        <p>
+                            <icons.FaRoute />
+                        </p>
                     </div>
-    
+
                     <div className={cx('notiable-features__content')}>
                         <p>Học qua bài giảng trực quan, rõ ràng và chi tiết.</p>
                         <p>Quiz tương tác sinh động giúp dễ dàng ghi nhớ hơn.</p>
@@ -77,11 +91,15 @@ function Introduction() {
                         <p>Lộ trình step-by-step rõ ràng, minh bạch.</p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
+
+            {/* Preview section - cập nhật lại sau*/}
+            <div className={cx('preview-section')}></div>
 
             {/* informations of lessons */}
             <div className={cx('lessons-information')}>
-                <div className="relative border-l-4 border-green-500 ml-6">
+                <div className={cx('lessons-information__container')}>
+                    <h4 className={cx('lessons-information__head')}>Nội dung khóa học</h4>
                     {steps.map((step, index) => (
                         <motion.div
                             key={step.id}
@@ -89,17 +107,38 @@ function Introduction() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.3 }}
                             viewport={{ once: false }}
-                            className="mb-8 ml-6 mt-"
+                            className={cx('lessons-information__item')}
                         >
-                            <div className="absolute -left-6 w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full">
+                            <div className={cx('lessons-information__heading')}>
                                 {step.id}
                             </div>
-                            <h3 className="text-xl font-bold">{step.title}</h3>
-                            <p className="text-gray-600">{step.desc}</p>
+                            <div className={cx('lessons-information__item-container')}>
+                                <h3 className={cx('lessons-information__title')}>{step.title}</h3>
+                                <p className={cx('lessons-information__desc')}>{step.desc}</p>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
             </div>
+
+            {/* CTA section */}
+            <section className={cx('cta-section')}>
+                <div className={cx('cta-section__slogan')}>
+                    <p className={cx('cta-section__call')}>
+                        “Hãy học cách của cây tre: âm thầm nuôi dưỡng gốc rễ, để khi đến lúc, bứt phá mạnh mẽ.”
+                    </p>
+                    <p className={cx('cta-section__call')}>
+                        “The best time to start was yesterday. The next best time is now.”
+                    </p>
+                    <p className={cx('cta-section__call')}>
+                        “Don’t wait. The time will never be just right.” – Napoleon Hill
+                    </p>
+                    <p className={cx('cta-section__call')}>
+                        “Dream big. Start small. Act now.”
+                    </p>
+                </div>
+                <Link to='/home' className={cx('cta-section__btn')}>Vào bài học ngay</Link>
+            </section>
         </div>
     );
 }

@@ -74,7 +74,8 @@
 
 .notiable-features {
     margin: 6rem 7rem;
-    padding: 7rem 7rem;
+    padding: 8rem 7rem;
+    border-bottom: 1px solid;
 
     & h3 {
         font-size: 4.8rem;
@@ -91,7 +92,7 @@
 }
 
 .notiable-features__icons {
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin-right: 3rem;
     margin-left: 5rem;
     color: var(--secondary-color);
@@ -102,5 +103,95 @@
 }
 
 .lessons-information {
-    margin-top: 100rem;
+    margin-top: -4rem;
+    margin-bottom: 6rem;
+    padding: 5rem;
+}
+
+.lessons-information__container {
+    text-align: center;
+}
+
+.lessons-information__head {
+    font-size: 3.6rem;
+    margin-bottom: 4rem;
+    color: var(--accent1-color);
+}
+
+.lessons-information__item {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.lessons-information__heading {
+    font-size: 4.4rem;
+    padding: 0.4rem 2.4rem;
+    padding-right: 3.6rem;
+    background-color: var(--primary-color);
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 0;
+        height: 0;
+
+        border-top: 3.7rem solid transparent; // nửa trên trong suốt
+        border-bottom: 3.7rem solid transparent; // nửa dưới trong suốt
+        border-right: 2.5rem solid var(--text-color);
+    }
+}
+
+.lessons-information__item-container {
+    text-align: left;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: 0.6rem 2rem;
+    width: 100%;
+}
+
+.lessons-information__title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif !important;
+}
+
+.lessons-information__desc {
+}
+
+.cta-section {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.cta-section__slogan {
+    margin-bottom: 5rem;
+}
+
+.cta-section__call {
+    font-size: 3.2rem;
+    color: var(--text-color);
+    margin-bottom: 1.6rem;
+}
+
+.cta-section__btn {
+    font-size: 2.4rem;
+    text-decoration: none;
+    background-color: var(--accent2-color);
+    text-decoration: none;
+    color: var(--black-color);
+    font-weight: 500;
+    padding: 0.8rem 1rem;
+    border-radius: 0.8rem;
+
+    &:hover {
+        background-color: #d58f16;
+    }
 }
