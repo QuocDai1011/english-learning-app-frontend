@@ -1,9 +1,10 @@
 import Home from '~/pages/Home';
 import Introduction from '~/pages/Introduction';
-import { HeaderAndFooter, DefaultLayout } from '~/components/Layouts';
+import { DefaultLayout } from '~/components/Layouts';
+import FooterOnly from '~/components/Layouts/FooterOnly';
 
 const publicRoutes = [
-    { path: '/', component: Introduction, layout:  null},
+    { path: '/', component: Introduction, layout:  FooterOnly},
     { path: '/home', component: Home, layout: DefaultLayout },
 ];
 

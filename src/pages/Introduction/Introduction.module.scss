@@ -76,6 +76,7 @@
     margin: 6rem 7rem;
     padding: 8rem 7rem;
     border-bottom: 1px solid;
+    width: 100%;
 
     & h3 {
         font-size: 4.8rem;
@@ -105,7 +106,7 @@
 .lessons-information {
     margin-top: -4rem;
     margin-bottom: 6rem;
-    padding: 5rem;
+    padding: 5rem 20rem;
 }
 
 .lessons-information__container {
@@ -114,7 +115,7 @@
 
 .lessons-information__head {
     font-size: 3.6rem;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     color: var(--accent1-color);
 }
 
@@ -122,7 +123,7 @@
     display: flex;
     // justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .lessons-information__heading {
@@ -153,8 +154,11 @@
     text-align: left;
     background-color: var(--text-color);
     color: var(--background-color);
-    padding: 0.6rem 2rem;
+    padding: 0.67888rem 2rem;
     width: 100%;
+    border-bottom-right-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+    
 }
 
 .lessons-information__title {
@@ -167,12 +171,15 @@
 }
 
 .cta-section {
-    margin-top: 3rem;
+    margin-top: 1rem;
     text-align: center;
+    margin-bottom: 4rem;
+    border-top: 1px solid;
 }
 
 .cta-section__slogan {
     margin-bottom: 5rem;
+    margin-top: 6rem;
 }
 
 .cta-section__call {

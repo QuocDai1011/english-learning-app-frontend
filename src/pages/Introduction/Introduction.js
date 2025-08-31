@@ -5,15 +5,35 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import { motion } from 'motion/react';
 import * as motion from 'motion/react-client';
 import * as icons from 'react-icons/fa';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function Introduction() {
-    const steps = [
-        { id: 1, title: 'Giới thiệu', desc: 'Khái quát nội dung khóa học' },
-        { id: 2, title: 'Bài cơ bản', desc: 'Các khái niệm nền tảng' },
-        { id: 3, title: 'Ứng dụng', desc: 'Ví dụ thực hành' },
-    ];
+    var prevApi = 'http://localhost:3001/';
+
+    const [lessons, setLessons] = useState([]);
+
+    useEffect(
+        function getAllLessons() {
+            axios
+                .get(`${prevApi}api/lessons`)
+                .then((res) => {
+                    setLessons(res.data);
+                    return;
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    console.log('Request finished');
+                });
+        },
+        [prevApi],
+    );
+
+    const steps = [...lessons];
 
     return (
         <div className={`${cx('container')}`}>
@@ -34,7 +54,7 @@ function Introduction() {
                     <button className={cx('btn-custom')}>Bắt đầu học ngay</button>
                 </Link>
                 <a href="#information">
-                    <button className={cx('btn-custom')}>Khám phá trang web</button>
+                    <button className={cx('btn-custom')}>Khám phá bài học</button>
                 </a>
             </div>
 
@@ -44,7 +64,7 @@ function Introduction() {
                 className={cx('about-section')}
                 initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
+                transition={{ duration: 0.35, delay: 0.1 }}
                 viewport={{ once: true }}
             >
                 <h3 className={cx('about-section__heading')}>Bạn sẽ nhận được gì khi học ở trang web này?</h3>
@@ -102,19 +122,17 @@ function Introduction() {
                     <h4 className={cx('lessons-information__head')}>Nội dung khóa học</h4>
                     {steps.map((step, index) => (
                         <motion.div
-                            key={step.id}
+                            key={index}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.3 }}
                             viewport={{ once: false }}
                             className={cx('lessons-information__item')}
                         >
-                            <div className={cx('lessons-information__heading')}>
-                                {step.id}
-                            </div>
+                            <div className={cx('lessons-information__heading')}>{index + 1}</div>
                             <div className={cx('lessons-information__item-container')}>
                                 <h3 className={cx('lessons-information__title')}>{step.title}</h3>
-                                <p className={cx('lessons-information__desc')}>{step.desc}</p>
+                                <p className={cx('lessons-information__desc')}>{step.description}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -122,7 +140,13 @@ function Introduction() {
             </div>
 
             {/* CTA section */}
-            <section className={cx('cta-section')}>
+            <motion.section
+                className={cx('cta-section')}
+                initial={{ opacity: 0, y: 70 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                viewport={{ once: true }}
+            >
                 <div className={cx('cta-section__slogan')}>
                     <p className={cx('cta-section__call')}>
                         “Hãy học cách của cây tre: âm thầm nuôi dưỡng gốc rễ, để khi đến lúc, bứt phá mạnh mẽ.”
@@ -133,12 +157,29 @@ function Introduction() {
                     <p className={cx('cta-section__call')}>
                         “Don’t wait. The time will never be just right.” – Napoleon Hill
                     </p>
-                    <p className={cx('cta-section__call')}>
-                        “Dream big. Start small. Act now.”
-                    </p>
+                    <p className={cx('cta-section__call')}>“Dream big. Start small. Act now.”</p>
                 </div>
-                <Link to='/home' className={cx('cta-section__btn')}>Vào bài học ngay</Link>
-            </section>
+                <motion.a
+                    href="/home"
+                    className={cx('cta-section__btn')}
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        boxShadow: [
+                            '0 0 0px var(--accent2-color)',
+                            '0 0 20px var(--accent2-color)',
+                            '0 0 0px var(--accent2-color)',
+                        ],
+                    }}
+                    transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatType: 'loop',
+                        ease: 'easeInOut',
+                    }}
+                >
+                    Vào bài học ngay
+                </motion.a>
+            </motion.section>
         </div>
     );
 }
