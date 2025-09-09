@@ -1,0 +1,42 @@
+.container-admin {
+    text-align: center;
+}
+
+.login-action {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-password {
+    margin-bottom: 3rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+}
+
+.btn-check-password {
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.8rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.message {
+    color: var(--accent1-color);
+}
+
+.actions {
+    width: 100%;
+    margin-top: 3.2rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btnCustom {
+    font-size: 2rem;
+    padding: 0.6rem 1rem;
+}

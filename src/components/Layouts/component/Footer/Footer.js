@@ -45,6 +45,9 @@ function Footer() {
                     Copyright <icons.FaCopyright className={cx('copyright__icon')} /> 2025 Tre Xanh English Center. All
                     rights reserved.
                 </p>
+                <div className={cx('copyright')}>
+                    <p>Designer and Developer: Quốc Đại.</p>
+                </div>
             </div>
         </div>
     );

@@ -126,7 +126,7 @@ function Introduction() {
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.3 }}
-                            viewport={{ once: false }}
+                            viewport={{ once: true }}
                             className={cx('lessons-information__item')}
                         >
                             <div className={cx('lessons-information__heading')}>{index + 1}</div>
