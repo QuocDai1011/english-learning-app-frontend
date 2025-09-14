@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 function Footer() {
     return (
         <div className={cx('container')}>
-            <img className={cx('logo-footer')} src="./logo-link.png" alt="logo" />
+            <img className={cx('logo-footer')} src="/logo-link.png" alt="logo" />
             <div className={cx('container-box')}>
                 <div className={cx('container-info')}>
                     <div className={cx('info')}>

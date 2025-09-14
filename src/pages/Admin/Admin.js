@@ -1,7 +1,7 @@
 import styles from './Admin.module.scss';
 import classNames from 'classnames/bind';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
@@ -13,6 +13,8 @@ function Admin() {
     const [numberOfLogins, setNumberOfLogins] = useState(3);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isDisableInput, setIsDisabledInput] = useState(false);
+    const [indexUser, setIndexUser] = useState(-1);
+    const actionsDiv = document.getElementById('actions');
 
     const navigate = useNavigate();
 
@@ -31,19 +33,23 @@ function Admin() {
 
             const user = res.data.find((acc) => acc.username === username && acc.password === password);
 
+            const indexUser = res.data.findIndex((acc) => acc.username === username && acc.password === password);
+            
             if (user) {
+                setIndexUser(indexUser);
                 setMessage('Đăng nhập thành công!');
                 setIsLoggedIn(!isLoggedIn);
                 setIsDisabledInput(true);
+                actionsDiv.style.display = 'flex';
             } else {
                 if (numberOfLogins <= 0) {
                     alert('Đã hết lượt đăng nhập!');
                     navigate('/');
                 }
-                setNumberOfLogins(numberOfLogins - 1);
-                setMessage('Thông tin đăng nhập không đúng!');
                 setUsername('');
                 setPassword('');
+                setNumberOfLogins(numberOfLogins - 1);
+                setMessage('Thông tin đăng nhập không đúng!');
             }
         } catch (err) {
             console.log(err);
@@ -53,76 +59,74 @@ function Admin() {
 
     return (
         <div className={cx('container-admin')}>
-            <form onSubmit={handleSubmit}>
-                <div className={cx('login-action')}>
-                    <label htmlFor="inputPassword5" className={cx(`form-label ${styles.label}`)}>
-                        Tên đăng nhập
-                    </label>
+            <form onSubmit={handleSubmit} className={cx('login-form')}>
+                <h2 className={cx('title')}>Welcome Back</h2>
+                <p className={cx('subtitle')}>Sign in to your account</p>
+
+                <div className={cx('form-group')}>
                     <input
                         disabled={isDisableInput}
-                        type="text"
-                        id="inputUsername"
-                        className={cx('input-password')}
-                        aria-describedby="passwordHelpBlock"
-                        value={username}
                         onChange={(e) => {
                             setUsername(e.target.value);
                         }}
+                        className={cx('input-username')}
+                        type="text"
+                        value={username}
+                        placeholder="Email Address"
+                        required
                     />
-                    <label htmlFor="inputPassword5" className={cx(`form-label ${styles.label}`)}>
-                        Mật khẩu
-                    </label>
+                </div>
+
+                <div className={cx('form-group password-group')}>
                     <input
                         disabled={isDisableInput}
-                        type="password"
-                        id="inputPassword5"
-                        className={cx('input-password')}
-                        aria-describedby="passwordHelpBlock"
-                        value={password}
                         onChange={(e) => {
                             setPassword(e.target.value);
                         }}
+                        className={cx('input-password')}
+                        value={password}
+                        type="password"
+                        placeholder="Password"
+                        required
                     />
-                    <button className={cx('btn-check-password')}>Đăng Nhập</button>
+                    {/* <span className={cx('eye-icon')}>👁</span> */}
                 </div>
-            </form>
-            <div id="passwordHelpBlock" className={cx()}>
-                Nhập mật khẩu của Admin để sử dụng các hành động sau!
-            </div>
-            {message && <p className={cx('message')}>{message}</p>}
 
-            <div className={cx('actions')}>
-                <button
-                    onClick={() => alert('This button is pressed')}
-                    disabled={!isLoggedIn}
-                    type="button"
-                    className={cx(`btn btn-primary ${styles.btnCustom}`)}
-                >
-                    Tạo khóa học mới
+                <div className={cx('options')}>
+                    <Link to={'/'}>Forgot password?</Link>
+                </div>
+
+                <button type="submit" className={cx('btn-primary')}>
+                    Sign In
                 </button>
-                <button
-                    onClick={() => alert('This button is pressed')}
-                    disabled={!isLoggedIn}
-                    type="button"
-                    className={cx(`btn btn-secondary ${styles.btnCustom}`)}
-                >
-                    Cập nhật khóa học
+
+                <p className={cx('signup-text')}>
+                    Don’t have an account? <Link to={'/'}>Sign up</Link>
+                </p>
+
+                {message && <p className={cx('message-notification')}>{message}</p>}
+            </form>
+
+            <div id="actions" className={cx('actions')}>
+                <button disabled={!isLoggedIn} type="button" className={cx(`btn btn-primary ${styles.btnCustom}`)}>
+                    <Link state={{ index: indexUser }} className={cx('btn-link')} to={'/admin/create-lesson'}>
+                        Tạo khóa học mới
+                    </Link>
                 </button>
-                <button
-                    onClick={() => alert('This button is pressed')}
-                    disabled={!isLoggedIn}
-                    type="button"
-                    className={cx(`btn btn-danger ${styles.btnCustom}`)}
-                >
-                    Xóa khóa học
+                <button disabled={!isLoggedIn} type="button" className={cx(`btn btn-secondary ${styles.btnCustom}`)}>
+                    <Link state={{ index: indexUser }} className={cx('btn-link')} to={'/admin/update-lesson'}>
+                        Cập nhật khóa học
+                    </Link>
                 </button>
-                <button
-                    onClick={() => alert('This button is pressed')}
-                    disabled={!isLoggedIn}
-                    type="button"
-                    className={cx(`btn btn-light ${styles.btnCustom}`)}
-                >
-                    Xem các khóa học
+                <button disabled={!isLoggedIn} type="button" className={cx(`btn btn-danger ${styles.btnCustom}`)}>
+                    <Link state={{ index: indexUser }} className={cx('btn-link')} to={'/admin/delete-lesson'}>
+                        Xóa khóa học
+                    </Link>
+                </button>
+                <button disabled={!isLoggedIn} type="button" className={cx(`btn btn-success ${styles.btnCustom}`)}>
+                    <Link state={{ index: indexUser }} className={cx('btn-link')} to={'/admin/show-lesson'}>
+                        Xem các khóa học
+                    </Link>
                 </button>
             </div>
         </div>
